@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sayan Ghosh · Digital Banking & ML/AI Product Leader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=Inconsolata:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:    #0b1f3a;
+      --navy-2:  #132c52;
+      --navy-3:  #1a3a6a;
+      --gold:    #b8974a;
+      --gold-2:  #d4af6e;
+      --gold-lt: #f5edd8;
+      --cream:   #faf8f4;
+      --cream-2: #f2ede4;
+      --cream-3: #e8e0d0;
+      --text:    #1a1410;
+      --text-2:  #4a4035;
+      --text-3:  #8a7d6d;
+      --border:  #d6cfc0;
+      --border-2:#c4bba8;
+      --white:   #ffffff;
+      --green:   #2a6b4a;
+      --shadow:  0 1px 3px rgba(11,31,58,.06), 0 4px 16px rgba(11,31,58,.06);
+      --shadow-lg: 0 8px 32px rgba(11,31,58,.12);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body:    'Jost', sans-serif;
+      --font-mono:    'Inconsolata', monospace;
+      --radius:  4px;
+      --radius-lg: 8px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--text); font-family: var(--font-body); font-size: 15px; line-height: 1.65; }
+
+    /* TOPBAR */
+    .topbar { background: var(--navy); color: rgba(255,255,255,.6); font-size: 12px; font-family: var(--font-mono); padding: 6px 48px; display: flex; justify-content: space-between; align-items: center; letter-spacing: .5px; }
+    .topbar a { color: var(--gold-2); text-decoration: none; }
+    .topbar-right { display: flex; gap: 24px; }
+
+    /* NAV */
+    nav { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 48px; height: 72px; display: flex; align-items: center; gap: 40px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
+    .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; flex-shrink: 0; }
+    .nav-brand-icon { width: 40px; height: 40px; background: var(--navy); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; }
+    .nav-brand-icon svg { fill: var(--gold-2); width: 22px; height: 22px; }
+    .nav-brand-name { font-family: var(--font-display); font-size: 18px; font-weight: 500; color: var(--navy); letter-spacing: .3px; line-height: 1.15; }
+    .nav-brand-sub { font-size: 10px; font-family: var(--font-mono); color: var(--text-3); letter-spacing: 1.5px; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2px; flex: 1; }
+    .nav-link { color: var(--text-2); font-size: 13px; padding: 6px 14px; border-radius: var(--radius); text-decoration: none; letter-spacing: .3px; transition: color .15s, background .15s; }
+    .nav-link:hover, .nav-link.active { color: var(--navy); background: var(--cream); font-weight: 500; }
+    .nav-right { margin-left: auto; display: flex; gap: 12px; align-items: center; }
+    .btn-outline { border: 1px solid var(--border-2); background: transparent; color: var(--navy); padding: 7px 20px; border-radius: var(--radius); font-size: 13px; font-weight: 500; font-family: var(--font-body); cursor: pointer; transition: border-color .15s; }
+    .btn-outline:hover { border-color: var(--navy); }
+    .btn-primary { background: var(--navy); color: var(--gold-2); border: 1px solid var(--navy); padding: 7px 20px; border-radius: var(--radius); font-size: 13px; font-weight: 500; font-family: var(--font-body); cursor: pointer; transition: background .15s; }
+    .btn-primary:hover { background: var(--navy-2); }
+
+    /* HERO */
+    .hero { background: var(--navy); padding: 80px 48px 72px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(184,151,74,.12) 0%, transparent 70%); pointer-events: none; }
+    .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 64px; align-items: center; }
+    .hero-eyebrow { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--gold-2); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+    .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+    .hero-name { font-family: var(--font-display); font-size: clamp(40px, 5vw, 64px); font-weight: 300; color: var(--white); line-height: 1.1; letter-spacing: -.5px; margin-bottom: 8px; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 26px); font-weight: 300; font-style: italic; color: var(--gold-2); margin-bottom: 24px; }
+    .hero-desc { font-size: 15px; color: rgba(255,255,255,.65); max-width: 560px; line-height: 1.75; margin-bottom: 36px; font-weight: 300; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-btn-primary { background: var(--gold); color: var(--navy); border: none; padding: 11px 28px; border-radius: var(--radius); font-size: 13px; font-weight: 500; font-family: var(--font-body); cursor: pointer; letter-spacing: .5px; transition: background .15s; text-decoration: none; display: inline-block; }
+    .hero-btn-primary:hover { background: var(--gold-2); }
+    .hero-btn-ghost { background: transparent; color: rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.2); padding: 11px 28px; border-radius: var(--radius); font-size: 13px; font-family: var(--font-body); cursor: pointer; letter-spacing: .5px; transition: border-color .15s, color .15s; text-decoration: none; display: inline-block; }
+    .hero-btn-ghost:hover { border-color: rgba(255,255,255,.5); color: white; }
+    .hero-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-lg); padding: 28px; width: 260px; flex-shrink: 0; }
+    .hero-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--navy-3), var(--gold)); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 28px; color: white; margin: 0 auto 12px; border: 2px solid rgba(184,151,74,.3); }
+    .hero-card-name { font-family: var(--font-display); font-size: 18px; color: white; margin-bottom: 2px; text-align: center; }
+    .hero-card-role { font-size: 11px; color: var(--gold-2); font-family: var(--font-mono); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; text-align: center; }
+    .hero-stats { display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,.08); padding-top: 16px; }
+    .hero-stat-num { font-family: var(--font-display); font-size: 22px; color: white; line-height: 1; text-align: center; }
+    .hero-stat-label { font-size: 10px; color: rgba(255,255,255,.4); font-family: var(--font-mono); text-transform: uppercase; margin-top: 3px; text-align: center; }
+
+    /* METRICS BAND */
+    .metrics-band { background: var(--navy); padding: 0; }
+    .metrics-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); background: rgba(255,255,255,.08); gap: 1px; }
+    .metric-block { background: var(--navy); padding: 36px 32px; text-align: center; position: relative; transition: background .2s; }
+    .metric-block:hover { background: var(--navy-2); }
+    .metric-num { font-family: var(--font-display); font-size: 48px; font-weight: 300; color: var(--white); line-height: 1; margin-bottom: 8px; }
+    .metric-num span { color: var(--gold-2); font-size: 32px; }
+    .metric-label { font-size: 11px; color: rgba(255,255,255,.45); font-family: var(--font-mono); letter-spacing: 1px; text-transform: uppercase; }
+    .metric-sub { font-size: 12px; color: rgba(255,255,255,.25); margin-top: 4px; }
+
+    /* LAYOUT */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .two-col { display: grid; grid-template-columns: 280px 1fr; gap: 48px; padding: 56px 0; align-items: start; }
+
+    /* SECTION HEADERS */
+    .section-eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .section-title { font-family: var(--font-display); font-size: 32px; font-weight: 400; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+
+    /* EXPERTISE */
+    .expertise-section { background: var(--cream); padding: 64px 0; }
+    .expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+    .expertise-card { background: var(--white); padding: 28px 24px; transition: background .15s; position: relative; }
+    .expertise-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: transparent; transition: background .2s; }
+    .expertise-card:hover { background: var(--cream); }
+    .expertise-card:hover::before { background: var(--gold); }
+    .expertise-icon { width: 44px; height: 44px; background: var(--cream-2); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px; border: 1px solid var(--border); }
+    .expertise-title { font-family: var(--font-display); font-size: 18px; font-weight: 500; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+    .expertise-desc { font-size: 13px; color: var(--text-2); line-height: 1.65; }
+
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
+    .timeline-entry { position: relative; margin-bottom: 40px; }
+    .timeline-entry:last-child { margin-bottom: 0; }
+    .timeline-dot { position: absolute; left: -29px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--white); border: 2px solid var(--border-2); transition: border-color .2s; }
+    .timeline-entry:first-child .timeline-dot { background: var(--gold); border-color: var(--gold); }
+    .timeline-entry:hover .timeline-dot { border-color: var(--gold); }
+    .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; gap: 16px; }
+    .timeline-company { font-family: var(--font-display); font-size: 20px; font-weight: 500; color: var(--navy); }
+    .timeline-date { font-family: var(--font-mono); font-size: 11px; color: var(--text-3); letter-spacing: .5px; white-space: nowrap; padding-top: 4px; }
+    .timeline-role { font-size: 13px; color: var(--text-3); margin-bottom: 10px; font-style: italic; }
+    .timeline-desc { font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 12px; }
+    .timeline-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { background: var(--cream-2); border: 1px solid var(--border); border-radius: 3px; padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); color: var(--text-2); }
+    .tag.gold { background: var(--gold-lt); border-color: rgba(184,151,74,.3); color: #7a5f28; }
+
+    /* SIDEBAR */
+    .sidebar { position: sticky; top: 88px; }
+    .profile-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 20px; box-shadow: var(--shadow); }
+    .profile-card-header { background: var(--navy); padding: 24px; text-align: center; position: relative; }
+    .profile-card-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .profile-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy-3), var(--gold)); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 30px; color: white; margin: 0 auto 12px; border: 2px solid rgba(184,151,74,.4); }
+    .profile-name { font-family: var(--font-display); font-size: 20px; color: white; margin-bottom: 2px; }
+    .profile-role { font-size: 11px; color: var(--gold-2); font-family: var(--font-mono); letter-spacing: 1px; text-transform: uppercase; }
+    .profile-body { padding: 20px; }
+    .contact-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-2); padding: 8px 0; border-bottom: 1px solid var(--cream-2); }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-row svg { width: 14px; height: 14px; fill: var(--text-3); flex-shrink: 0; }
+    .contact-row a { color: var(--navy); text-decoration: none; }
+    .contact-row a:hover { color: var(--gold); }
+    .sidebar-box { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 20px; box-shadow: var(--shadow); }
+    .sidebar-box-header { padding: 12px 20px; border-bottom: 1px solid var(--cream-2); font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-3); background: var(--cream); }
+    .sidebar-box-body { padding: 16px 20px; }
+    .skill-chip { display: inline-block; background: var(--cream-2); border: 1px solid var(--border); border-radius: 3px; padding: 3px 9px; font-size: 11px; font-family: var(--font-mono); color: var(--text-2); margin: 3px 2px 3px 0; }
+    .cert-row { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--text-2); padding: 7px 0; border-bottom: 1px solid var(--cream-2); line-height: 1.4; }
+    .cert-row:last-child { border-bottom: none; }
+    .cert-row::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+    .award-row { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: var(--text-2); padding: 7px 0; border-bottom: 1px solid var(--cream-2); line-height: 1.5; }
+    .award-row:last-child { border-bottom: none; }
+
+    /* ACCOMPLISHMENTS */
+    .accmp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .accmp-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); transition: box-shadow .2s, transform .2s; position: relative; overflow: hidden; }
+    .accmp-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
+    .accmp-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-1px); }
+    .accmp-tag { display: inline-block; background: var(--gold-lt); color: #7a5f28; border-radius: 3px; padding: 2px 8px; font-size: 10px; font-family: var(--font-mono); letter-spacing: .5px; text-transform: uppercase; margin-bottom: 10px; border: 1px solid rgba(184,151,74,.25); }
+    .accmp-title { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+    .accmp-desc { font-size: 13px; color: var(--text-2); line-height: 1.65; margin-bottom: 14px; }
+    .accmp-stat { display: flex; align-items: baseline; gap: 8px; padding-top: 12px; border-top: 1px solid var(--cream-2); }
+    .accmp-num { font-family: var(--font-display); font-size: 28px; color: var(--navy); line-height: 1; }
+    .accmp-unit { font-size: 12px; color: var(--text-3); font-family: var(--font-mono); }
+
+    /* TECH */
+    .tech-section { background: var(--cream-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 56px 48px; }
+    .tech-inner { max-width: 1200px; margin: 0 auto; }
+    .tech-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+    .tech-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 12px; text-align: center; transition: border-color .15s, box-shadow .15s; }
+    .tech-item:hover { border-color: var(--gold); box-shadow: 0 2px 8px rgba(184,151,74,.15); }
+    .tech-emoji { font-size: 22px; display: block; margin-bottom: 6px; }
+    .tech-name { font-size: 11px; font-family: var(--font-mono); color: var(--text-2); }
+
+    /* FOOTER */
+    .footer-band { background: var(--navy); padding: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; }
+    .footer-brand-name { font-family: var(--font-display); font-size: 24px; color: white; margin-bottom: 4px; }
+    .footer-brand-sub { font-size: 11px; font-family: var(--font-mono); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-2); margin-bottom: 16px; }
+    .footer-desc { font-size: 13px; color: rgba(255,255,255,.4); line-height: 1.7; }
+    .footer-heading { font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,.55); text-decoration: none; margin-bottom: 8px; transition: color .15s; }
+    .footer-link:hover { color: var(--gold-2); }
+    .footer-bottom { background: #080f1c; padding: 16px 48px; text-align: center; font-size: 12px; font-family: var(--font-mono); color: rgba(255,255,255,.2); }
+    .footer-bottom a { color: rgba(255,255,255,.35); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--gold-2); }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp .5s ease both; }
+    .fade-up:nth-child(1) { animation-delay: .05s; }
+    .fade-up:nth-child(2) { animation-delay: .12s; }
+    .fade-up:nth-child(3) { animation-delay: .19s; }
+    .fade-up:nth-child(4) { animation-delay: .26s; }
+    .fade-up:nth-child(5) { animation-delay: .33s; }
+    .fade-up:nth-child(6) { animation-delay: .4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .two-col { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .metrics-inner { grid-template-columns: 1fr 1fr; }
+      nav, .topbar, .hero, .footer-band, .tech-section { padding-left: 24px; padding-right: 24px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero-card { width: 100%; max-width: 320px; }
+      .container { padding: 0 24px; }
+      .tech-grid { grid-template-columns: repeat(4, 1fr); }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { padding: 16px 24px; }
+    }
+    @media (max-width: 680px) {
+      .accmp-grid, .expertise-grid { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: repeat(3, 1fr); }
+      .nav-links, .topbar-right { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>Digital Banking &amp; ML/AI Product Leadership</span>
+  <div class="topbar-right">
+    <a href="tel:8323870537">(832) 387-0537</a>
+    <a href="mailto:sayans88@gmail.com">sayans88@gmail.com</a>
+    <a href="https://www.linkedin.com/in/ghosh-sayan/" target="_blank">LinkedIn ↗</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-brand-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8.5v7L12 19.82 4 15.5v-7l8-4.32z"/></svg>
+    </div>
+    <div>
+      <div class="nav-brand-name">Sayan Ghosh</div>
+      <div class="nav-brand-sub">Product &amp; Technology</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link active" href="#">Overview</a>
+    <a class="nav-link" href="#expertise">Expertise</a>
+    <a class="nav-link" href="#experience">Experience</a>
+    <a class="nav-link" href="#accomplishments">Accomplishments</a>
+    <a class="nav-link" href="#technology">Technology</a>
+  </div>
+  <div class="nav-right">
+    <button class="btn-outline" onclick="window.open('https://www.linkedin.com/in/ghosh-sayan/','_blank')">LinkedIn</button>
+    <button class="btn-primary" onclick="window.location='mailto:sayans88@gmail.com'">Get in Touch</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Digital Product Leadership</div>
+      <h1 class="hero-name">Sayan Ghosh</h1>
+      <div class="hero-title">VP, Digital Product Manager</div>
+      <p class="hero-desc">ML/AI Product Leader with 7+ years of product management and 15+ years of overall experience building intelligent data platforms across financial services, energy, and manufacturing. Proven track record defining product vision and delivering enterprise-scale solutions in regulated environments.</p>
+      <div class="hero-ctas">
+        <a class="hero-btn-primary" href="mailto:sayans88@gmail.com">Contact Me</a>
+        <a class="hero-btn-ghost" href="https://www.linkedin.com/in/ghosh-sayan/" target="_blank">View LinkedIn</a>
+        <a class="hero-btn-ghost" href="https://www.credly.com/users/ghosh-sayan" target="_blank">Certifications</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-avatar">SG</div>
+      <div class="hero-card-name">Sayan Ghosh</div>
+      <div class="hero-card-role">VP · JP Morgan &amp; Chase</div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">15<span style="font-size:14px;color:var(--gold-2)">+</span></div>
+          <div class="hero-stat-label">Yrs Exp.</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">20</div>
+          <div class="hero-stat-label">Team</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">10<span style="font-size:14px;color:var(--gold-2)">K</span></div>
+          <div class="hero-stat-label">Cases/yr</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<div class="metrics-band">
+  <div class="metrics-inner">
+    <div class="metric-block">
+      <div class="metric-num">57<span>%</span></div>
+      <div class="metric-label">Onboarding Acceleration</div>
+      <div class="metric-sub">7 days → 3 days</div>
+    </div>
+    <div class="metric-block">
+      <div class="metric-num">95<span>%</span></div>
+      <div class="metric-label">Operational Efficiency</div>
+      <div class="metric-sub">40 hours → 2 hours</div>
+    </div>
+    <div class="metric-block">
+      <div class="metric-num">10<span>K</span></div>
+      <div class="metric-label">Cases Automated / Year</div>
+      <div class="metric-sub">ML/rule-driven decisioning</div>
+    </div>
+    <div class="metric-block">
+      <div class="metric-num">3<span>×</span></div>
+      <div class="metric-label">Customer Delight Award</div>
+      <div class="metric-sub">Capgemini Cloud 2019–21</div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERTISE -->
+<section class="expertise-section" id="expertise">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px;">
+      <div class="section-eyebrow">Core Capabilities</div>
+      <div class="section-title">Areas of Expertise</div>
+    </div>
+    <div class="expertise-grid">
+      <div class="expertise-card fade-up">
+        <div class="expertise-icon">🤖</div>
+        <div class="expertise-title">ML/AI Product Strategy</div>
+        <div class="expertise-desc">Defining and delivering intelligent platforms — document ingestion, entity resolution, risk scoring — with explainable, auditable decisioning for regulated banking environments.</div>
+      </div>
+      <div class="expertise-card fade-up">
+        <div class="expertise-icon">🏦</div>
+        <div class="expertise-title">KYC/AML Compliance</div>
+        <div class="expertise-desc">Embedding AML/KYC compliance into product design; operationalizing CDD, KYB, UBO, CIP, AVS automation at enterprise scale with full regulatory alignment.</div>
+      </div>
+      <div class="expertise-card fade-up">
+        <div class="expertise-icon">📊</div>
+        <div class="expertise-title">Data Platform Leadership</div>
+        <div class="expertise-desc">Guiding architecture across data integration, pipelines, and decisioning systems. Deep expertise in Snowflake, Kafka, and cloud-native infrastructure.</div>
+      </div>
+      <div class="expertise-card fade-up">
+        <div class="expertise-icon">🔄</div>
+        <div class="expertise-title">Agile Delivery</div>
+        <div class="expertise-desc">Certified PSM and SAFe 5 Scrum Master. Leading cross-functional teams of 20+ across engineering, data science, compliance and business stakeholders.</div>
+      </div>
+      <div class="expertise-card fade-up">
+        <div class="expertise-icon">📈</div>
+        <div class="expertise-title">Product Roadmap & KPIs</div>
+        <div class="expertise-desc">Establishing monitoring frameworks, experimentation loops, and ROI-driven strategies linking technology investments to measurable efficiency and revenue outcomes.</div>
+      </div>
+      <div class="expertise-card fade-up">
+        <div class="expertise-icon">🤝</div>
+        <div class="expertise-title">Stakeholder Management</div>
+        <div class="expertise-desc">Translating ambiguous business and compliance requirements into scalable, production-grade data products aligned with senior leadership and regulatory priorities.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- TWO COLUMN -->
+<div class="container">
+  <div class="two-col">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="profile-card">
+        <div class="profile-card-header">
+          <div class="profile-avatar">SG</div>
+          <div class="profile-name">Sayan Ghosh</div>
+          <div class="profile-role">VP, Digital Product</div>
+        </div>
+        <div class="profile-body">
+          <div class="contact-row">
+            <svg viewBox="0 0 16 16"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2zm0 1.5a.25.25 0 0 0-.25.25v.4l6.5 4.334 6.5-4.335v-.4a.25.25 0 0 0-.25-.25H1.75zM14.5 7.23 8.5 11.08a.5.5 0 0 1-.5 0L2 7.23v5.02c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V7.23z"/></svg>
+            <a href="mailto:sayans88@gmail.com">sayans88@gmail.com</a>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 16 16"><path d="M1.5 4.098v-.001a3.697 3.697 0 0 1 3.698-3.597h.001c.96 0 1.877.381 2.556 1.059l1.603 1.603a3.697 3.697 0 0 1 0 5.228l-.483.483a.75.75 0 0 1-1.06-1.061l.483-.483a2.197 2.197 0 0 0 0-3.107L6.695 2.62a2.197 2.197 0 0 0-3.554 2.507l.406.81a.75.75 0 0 1-1.341.672l-.406-.81A3.697 3.697 0 0 1 1.5 4.098zm13 7.804v.001a3.697 3.697 0 0 1-3.698 3.597H10.8a3.697 3.697 0 0 1-2.556-1.059L6.641 12.84a3.697 3.697 0 0 1 0-5.228l.483-.483a.75.75 0 0 1 1.06 1.061l-.483.483a2.197 2.197 0 0 0 0 3.107l1.603 1.603a2.197 2.197 0 0 0 3.554-2.507l-.406-.81a.75.75 0 0 1 1.341-.672l.406.81a3.697 3.697 0 0 1 .3 1.498z"/></svg>
+            <a href="https://www.linkedin.com/in/ghosh-sayan/" target="_blank">linkedin.com/in/ghosh-sayan</a>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0z"/><path d="M8 3.5a.75.75 0 0 1 .75.75v3.25h2.5a.75.75 0 0 1 0 1.5H7.25A.75.75 0 0 1 7.25 8V4.25A.75.75 0 0 1 8 3.5z"/></svg>
+            Houston, TX · (832) 387-0537
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 16 16"><path d="M7.467.133a1.748 1.748 0 0 1 1.066 0l5.25 1.68A1.75 1.75 0 0 1 15 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.697 1.697 0 0 1-1.33 0C6.168 12.495 4.566 11.18 3.583 9.682 2.6 8.182 2.28 6.566 2.28 5V3.48a1.75 1.75 0 0 1 1.217-1.667Zm.61 1.429a.25.25 0 0 0-.153 0l-5.25 1.68a.25.25 0 0 0-.174.238V7c0 1.358.275 2.666 1.057 3.86.784 1.194 2.121 2.38 4.366 3.367a.196.196 0 0 0 .154 0c2.245-.987 3.582-2.173 4.366-3.367C13.225 9.666 13.5 8.358 13.5 7V3.48a.251.251 0 0 0-.174-.237l-5.25-1.68Z"/></svg>
+            <a href="https://www.credly.com/users/ghosh-sayan" target="_blank">Credly Certifications</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-box">
+        <div class="sidebar-box-header">Technology</div>
+        <div class="sidebar-box-body">
+          <span class="skill-chip">Python</span><span class="skill-chip">SQL</span><span class="skill-chip">Java</span>
+          <span class="skill-chip">Android</span><span class="skill-chip">Snowflake</span><span class="skill-chip">Kafka</span>
+          <span class="skill-chip">AWS</span><span class="skill-chip">GCP</span><span class="skill-chip">Splunk</span>
+          <span class="skill-chip">Tableau</span><span class="skill-chip">New Relic</span><span class="skill-chip">Jira Align</span>
+          <span class="skill-chip">Rally</span><span class="skill-chip">AHA</span><span class="skill-chip">XSOAR</span>
+        </div>
+      </div>
+
+      <div class="sidebar-box">
+        <div class="sidebar-box-header">Certifications</div>
+        <div class="sidebar-box-body">
+          <div class="cert-row">Professional Scrum Master (PSM)</div>
+          <div class="cert-row">SAFe 5 Scrum Master (SSM)</div>
+          <div class="cert-row">AWS Cloud Practitioner</div>
+          <div class="cert-row">Google Cloud Platform</div>
+          <div class="cert-row">Splunk Certified</div>
+          <div class="cert-row">New Relic Performance Pro</div>
+          <div class="cert-row">Six Sigma Yellow Belt</div>
+          <div class="cert-row">PMI — Coursera</div>
+          <div class="cert-row">Harvard ManageMentor</div>
+        </div>
+      </div>
+
+      <div class="sidebar-box">
+        <div class="sidebar-box-header">Awards</div>
+        <div class="sidebar-box-body">
+          <div class="award-row">🏆 Capgemini Customer Delight (Cloud) — 3× (2019–2021)</div>
+          <div class="award-row">🥈 2nd Place, Predix Transform Hackathon — Las Vegas, 2016</div>
+          <div class="award-row">⭐ Team of the Quarter, GE O&amp;G OneDrilling Portal — 2015</div>
+        </div>
+      </div>
+
+      <div class="sidebar-box">
+        <div class="sidebar-box-header">Education</div>
+        <div class="sidebar-box-body">
+          <div style="font-family:var(--font-display);font-size:16px;font-weight:500;color:var(--navy);margin-bottom:4px;">B.Tech, Information Technology</div>
+          <div style="font-size:13px;color:var(--text-2);margin-bottom:4px;">West Bengal University of Technology</div>
+          <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-3);">West Bengal, India · 2010</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main>
+      <div id="experience" style="margin-bottom:48px;">
+        <div class="section-eyebrow">Career History</div>
+        <div class="section-title" style="margin-bottom:32px;">Professional Experience</div>
+        <div class="timeline">
+          <div class="timeline-entry fade-up">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div class="timeline-company">JP Morgan & Chase</div>
+              <div class="timeline-date">2022 – Present</div>
+            </div>
+            <div class="timeline-role">Digital Product Manager, VP — Commercial & Investment Banking, Global Payments</div>
+            <div class="timeline-desc">Led product development &amp; delivery for customer-facing &amp; internal banking services across property management, client onboarding, entity relationship management, client risk assessment, platform data quality resolution, and product compliance. Managed a team of 2 product analysts and 18 engineers.</div>
+            <div class="timeline-tags">
+              <span class="tag gold">ML/AI Platform</span><span class="tag gold">KYC/AML</span>
+              <span class="tag">Entity Resolution</span><span class="tag">Risk Scoring</span>
+              <span class="tag">Snowflake</span><span class="tag">Kafka</span><span class="tag">Data Products API</span>
+            </div>
+          </div>
+          <div class="timeline-entry fade-up">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div class="timeline-company">Capgemini America</div>
+              <div class="timeline-date">2015 – 2022</div>
+            </div>
+            <div class="timeline-role">Product Delivery Manager / Agile Delivery Lead — GE, Honeywell, Cisco, Cox Communications, Schlumberger</div>
+            <div class="timeline-desc">Translated business needs into strategic product roadmaps for cybersecurity, architecture, and compliance. Led design and development of microservice applications for the energy sector. Directed scientific analysis and predictive modeling for architecture optimization. Received the Capgemini Customer Delight Award (Cloud) three consecutive years.</div>
+            <div class="timeline-tags">
+              <span class="tag gold">Agile / SAFe</span><span class="tag">IIoT / Predix</span>
+              <span class="tag">Cloud Foundry</span><span class="tag">Microservices</span>
+              <span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Cybersecurity</span>
+            </div>
+          </div>
+          <div class="timeline-entry fade-up">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div class="timeline-company">IGATE Technologies Inc.</div>
+              <div class="timeline-date">2012 – 2014</div>
+            </div>
+            <div class="timeline-role">Technical Lead / Senior Software Engineer — GE Power, O&G, Capital (India & USA)</div>
+            <div class="timeline-desc">Delivered Java-based web solutions for GE Distributed Power Customer Portal and O&amp;G OneDrilling Portal. Led Java/J2EE/Android framework development and integrated Google Analytics for data-driven feature prioritization.</div>
+            <div class="timeline-tags">
+              <span class="tag">Java / J2EE</span><span class="tag">Android</span>
+              <span class="tag">Google Analytics</span><span class="tag">Asset Management</span>
+            </div>
+          </div>
+          <div class="timeline-entry fade-up">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div class="timeline-company">Patni Computer Systems</div>
+              <div class="timeline-date">2010 – 2012</div>
+            </div>
+            <div class="timeline-role">Programmer Analyst / Software Engineer — Cambridge University Press, Serco Learning (India)</div>
+            <div class="timeline-desc">Developed the Cambridge University Press Learning Management Portal. Created reporting models in MS SSRS R2 for UK public schools and built PHP-based content management solutions.</div>
+            <div class="timeline-tags">
+              <span class="tag">PHP</span><span class="tag">SQL Server</span><span class="tag">SSRS</span><span class="tag">LMS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="accomplishments">
+        <div class="section-eyebrow">Impact</div>
+        <div class="section-title" style="margin-bottom:24px;">Key Accomplishments</div>
+        <div class="accmp-grid">
+          <div class="accmp-card fade-up">
+            <div class="accmp-tag">Client Verification</div>
+            <div class="accmp-title">ML/AI-Powered KYC Platform</div>
+            <div class="accmp-desc">End-to-end delivery of an ML/AI client assessment platform that automates document ingestion, entity resolution, risk signal aggregation, and delivers auditable decisioning to front/middle office bankers.</div>
+            <div class="accmp-stat">
+              <div class="accmp-num">95%</div>
+              <div class="accmp-unit">efficiency gain — 40h → 2h per review</div>
+            </div>
+          </div>
+          <div class="accmp-card fade-up">
+            <div class="accmp-tag">Onboarding Automation</div>
+            <div class="accmp-title">Real-Time Onboarding Profiler</div>
+            <div class="accmp-desc">ML-driven personalized recommendations and real-time API solutions for client household and account profiling. Accelerated end-to-end workflows for 10,000 cases per year in Commercial Banking.</div>
+            <div class="accmp-stat">
+              <div class="accmp-num">57%</div>
+              <div class="accmp-unit">faster onboarding — 7 days → 3 days</div>
+            </div>
+          </div>
+          <div class="accmp-card fade-up">
+            <div class="accmp-tag">Product Innovation</div>
+            <div class="accmp-title">Client Account Profiler</div>
+            <div class="accmp-desc">Conceived and launched a reusable data product that programmatically verifies client-to-JPMC relationships, eliminating manual capture for 15K annual Commercial Card &amp; Loan onboardings.</div>
+            <div class="accmp-stat">
+              <div class="accmp-num">15K</div>
+              <div class="accmp-unit">annual cases fully automated</div>
+            </div>
+          </div>
+          <div class="accmp-card fade-up">
+            <div class="accmp-tag">Framework Delivery</div>
+            <div class="accmp-title">DCB Insights Framework</div>
+            <div class="accmp-desc">Designed and delivered the Digital Commercial Bank Insights framework with 3 pilot insights into production in 9 months, enabling 75% of MVP use cases for 100+ Innovation Economy clients.</div>
+            <div class="accmp-stat">
+              <div class="accmp-num">75%</div>
+              <div class="accmp-unit">MVP use cases enabled in 9 months</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- TECH STACK -->
+<section class="tech-section" id="technology">
+  <div class="tech-inner">
+    <div style="text-align:center;margin-bottom:32px;">
+      <div class="section-eyebrow">Technical Stack</div>
+      <div class="section-title">Technologies &amp; Tools</div>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-item"><span class="tech-emoji">🐍</span><div class="tech-name">Python</div></div>
+      <div class="tech-item"><span class="tech-emoji">☕</span><div class="tech-name">Java</div></div>
+      <div class="tech-item"><span class="tech-emoji">🗄️</span><div class="tech-name">SQL</div></div>
+      <div class="tech-item"><span class="tech-emoji">❄️</span><div class="tech-name">Snowflake</div></div>
+      <div class="tech-item"><span class="tech-emoji">📨</span><div class="tech-name">Kafka</div></div>
+      <div class="tech-item"><span class="tech-emoji">☁️</span><div class="tech-name">AWS</div></div>
+      <div class="tech-item"><span class="tech-emoji">🌐</span><div class="tech-name">GCP</div></div>
+      <div class="tech-item"><span class="tech-emoji">📊</span><div class="tech-name">Tableau</div></div>
+      <div class="tech-item"><span class="tech-emoji">🔍</span><div class="tech-name">Splunk</div></div>
+      <div class="tech-item"><span class="tech-emoji">📡</span><div class="tech-name">New Relic</div></div>
+      <div class="tech-item"><span class="tech-emoji">🛡️</span><div class="tech-name">AppDynamics</div></div>
+      <div class="tech-item"><span class="tech-emoji">📋</span><div class="tech-name">Jira / Align</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer-band">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">Sayan Ghosh</div>
+      <div class="footer-brand-sub">Digital Product Leader</div>
+      <div class="footer-desc">ML/AI Product Leader with 15+ years building intelligent data platforms across financial services, energy, and manufacturing. VP at JP Morgan &amp; Chase.</div>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <a class="footer-link" href="mailto:sayans88@gmail.com">sayans88@gmail.com</a>
+      <a class="footer-link" href="tel:8323870537">(832) 387-0537</a>
+      <a class="footer-link" href="https://www.linkedin.com/in/ghosh-sayan/" target="_blank">linkedin.com/in/ghosh-sayan</a>
+      <a class="footer-link" href="https://www.credly.com/users/ghosh-sayan" target="_blank">Credly Certifications</a>
+    </div>
+    <div>
+      <div class="footer-heading">Expertise</div>
+      <a class="footer-link" href="#expertise">ML/AI Product Strategy</a>
+      <a class="footer-link" href="#expertise">KYC / AML Compliance</a>
+      <a class="footer-link" href="#expertise">Data Platform Architecture</a>
+      <a class="footer-link" href="#experience">Agile Delivery (PSM, SAFe)</a>
+      <a class="footer-link" href="#accomplishments">Commercial Banking Products</a>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom">
+  © 2025 Sayan Ghosh · <a href="mailto:sayans88@gmail.com">sayans88@gmail.com</a> · Houston, TX
+</div>
+
+<script>
+  const sections = ['expertise','experience','accomplishments','technology'];
+  const navLinks = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 100) cur = id;
+    });
+    navLinks.forEach(l => {
+      const href = l.getAttribute('href');
+      l.classList.toggle('active', href === '#' + cur || (cur === '' && href === '#'));
+    });
+  });
+</script>
+</body>
+</html>
